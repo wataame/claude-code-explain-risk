@@ -154,9 +154,11 @@ Medium/High risk → shows explanation and asks for confirmation
 ```
 
 
-## Contributing
+## Feedback & Contributing
 
-Issues and PRs are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Found a bug? Want a new command supported? Feel free to [open an issue](https://github.com/wataame/claude-code-explain-risk/issues)!
+
+PRs are also welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## License
 

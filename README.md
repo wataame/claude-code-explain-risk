@@ -156,14 +156,15 @@ explain-risk.js が呼ばれる
 ```
 
 
-## 貢献
+## フィードバック・貢献
 
-Issue や PR を歓迎しています！詳しくは [CONTRIBUTING.md](CONTRIBUTING.md) をご覧ください。
+使ってみて気になったことがあれば、お気軽に [Issue](https://github.com/wataame/claude-code-explain-risk/issues) を立ててください！
 
-- 新しいコマンドの追加リクエスト
-- 説明テキストの改善
-- バグ報告
-- ドキュメントの改善
+- 「このコマンドも対応してほしい」
+- 「この説明がちょっと分かりにくい」
+- 「こんなバグがあった」
+
+PR も大歓迎です。詳しくは [CONTRIBUTING.md](CONTRIBUTING.md) をどうぞ。
 
 ## ライセンス
 
