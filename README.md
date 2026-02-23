@@ -119,12 +119,16 @@ Commands already allowed in Claude Code's `settings.json` are respected. The hoo
 
 ## Language
 
-The display language switches automatically based on the `LANG` environment variable.
+The display language is detected automatically:
 
-| `LANG` | Display Language |
+1. `LANG` environment variable (e.g. `ja_JP.UTF-8` → Japanese)
+2. **macOS**: Falls back to system language via `AppleLocale` if `LANG` doesn't match
+
+| Condition | Display Language |
 |---|---|
-| `ja_JP.UTF-8`, etc. (starts with `ja`) | Japanese |
-| Anything else (`en_US.UTF-8`, etc.) | English |
+| `LANG` starts with `ja` | Japanese |
+| macOS system language is Japanese | Japanese |
+| Otherwise | English |
 
 No configuration needed.
 

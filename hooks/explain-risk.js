@@ -6,10 +6,23 @@ const path = require('path');
 const os = require('os');
 
 // ============================================
-// 言語判定（LANG 環境変数で切り替え）
-// ja で始まれば日本語、それ以外は英語（デフォルト）
+// 言語判定
+// 1. LANG 環境変数が ja で始まれば日本語
+// 2. macOS: AppleLocale が ja で始まれば日本語（LANG が地域設定ベースの場合のフォールバック）
+// 3. それ以外は英語（デフォルト）
 // ============================================
-const LANG = (process.env.LANG || '').toLowerCase().startsWith('ja') ? 'ja' : 'en';
+function detectLang() {
+  if ((process.env.LANG || '').toLowerCase().startsWith('ja')) return 'ja';
+  if (process.platform === 'darwin') {
+    try {
+      const { execSync } = require('child_process');
+      const locale = execSync('defaults read -g AppleLocale', { encoding: 'utf8', timeout: 1000 }).trim();
+      if (locale.toLowerCase().startsWith('ja')) return 'ja';
+    } catch {}
+  }
+  return 'en';
+}
+const LANG = detectLang();
 
 // ============================================
 // カラー定義（ANSI 標準16色 — ターミナルテーマに自動で馴染む）
