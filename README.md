@@ -29,6 +29,18 @@ npx claude-code-explain-risk
 
 インストール後、Claude Code を再起動すると有効になります。
 
+> **Node.js が入っていない場合**
+>
+> `npx` コマンドが見つからない場合は、先に Node.js をインストールしてください。
+>
+> ```bash
+> # macOS（Homebrew）
+> brew install node
+>
+> # macOS / Linux（Homebrew なし）
+> curl -fsSL https://fnm.vercel.app/install | bash && fnm install --lts
+> ```
+
 ## アンインストール
 
 ```bash

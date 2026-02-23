@@ -38,6 +38,18 @@ npx claude-code-explain-risk
 
 Restart Claude Code after installation.
 
+> **Don't have Node.js?**
+>
+> If the `npx` command is not found, install Node.js first:
+>
+> ```bash
+> # macOS (Homebrew)
+> brew install node
+>
+> # macOS / Linux (without Homebrew)
+> curl -fsSL https://fnm.vercel.app/install | bash && fnm install --lts
+> ```
+
 ## Uninstall
 
 ```bash
