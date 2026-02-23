@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+*.log
+test-hook.txt
+.claude/
+explain-risk-review.md
+PLAN.md
