@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/header.png" alt="Claude Code Explain Risk" width="600">
+  <img src="assets/header.png" alt="Claude Code Explain Risk">
 </p>
 
 # Claude Code Explain Risk
@@ -32,18 +32,8 @@ npm パッケージをインストールしようとしています。
 
 ## インストール
 
-### ワンライナー（おすすめ）
-
 ```bash
-curl -fsSL https://raw.githubusercontent.com/wataame/claude-code-explain-risk/main/install.sh | bash
-```
-
-### ローカルインストール
-
-```bash
-git clone https://github.com/wataame/claude-code-explain-risk.git
-cd claude-code-explain-risk
-bash install.sh
+npx claude-code-explain-risk
 ```
 
 インストール後、Claude Code を再起動すると有効になります。
@@ -51,11 +41,7 @@ bash install.sh
 ## アンインストール
 
 ```bash
-# ローカルにリポジトリがある場合
-bash uninstall.sh
-
-# リポジトリがない場合
-curl -fsSL https://raw.githubusercontent.com/wataame/claude-code-explain-risk/main/uninstall.sh | bash
+npx claude-code-explain-risk --uninstall
 ```
 
 ## リスクレベル
@@ -102,6 +88,19 @@ curl -fsSL https://raw.githubusercontent.com/wataame/claude-code-explain-risk/ma
 | テキスト処理 | `jq`、`sort`、`cut` |
 | Git 読み取り | `git status`、`git log`、`git diff` |
 | バージョン確認 | `--version`、`--help` |
+
+### 対象外のツール
+
+以下のツールは Claude Code の仕様上、フックの説明テキストを表示できないため対象外です。Claude Code 独自の許可ダイアログがそのまま表示されます。
+
+| ツール | 説明 |
+|---|---|
+| Edit / Write | ファイルの編集・作成。Claude Code が変更内容を専用UIで表示 |
+| WebFetch / WebSearch | Web へのアクセス。アクセス先 URL が専用UIで表示 |
+| MCP ツール | 外部サービスとの連携。専用UIで表示 |
+| Read / Glob / Grep | ファイルの読み取り・検索。読み取り専用のため自動許可 |
+
+> Claude Code 側で対応が進めば（[#17356](https://github.com/anthropics/claude-code/issues/17356)）、将来的にこれらのツールでもリスク説明が表示されるようになる見込みです。
 
 ## 設定との連携
 
@@ -161,23 +160,6 @@ explain-risk.js が呼ばれる
 中・高リスク → 説明を表示して確認
 ```
 
-### 対象ツール
-
-リスク説明が表示されるのは **Bash コマンドのみ** です。これは Claude Code の仕様上、フックの説明テキストを表示できるのが Bash の許可ダイアログに限られるためです。
-
-| ツール | 許可ダイアログ | リスク説明 |
-|---|---|---|
-| **Bash** | あり | あり（このツールが表示） |
-| Edit / Write | あり（Claude Code 独自のUI） | なし |
-| WebFetch / WebSearch | あり（Claude Code 独自のUI） | なし |
-| MCP ツール | あり（Claude Code 独自のUI） | なし |
-| Read / Glob / Grep | なし（自動許可） | なし |
-
-Bash 以外のツール（Edit、Write、WebFetch、MCP など）では、Claude Code 独自の許可ダイアログがそのまま表示されます。これらのツールは Claude Code が専用のUIで内容を表示するため、フックの説明テキストは使用されません。
-
-> Bash は全ツール使用の約 38% を占め、非エンジニアが最も判断に困るツールです。実用上、Bash だけでも十分な効果があります。
-
-なお、フック内部では MCP ツールや Edit / Write に対しても判定ロジックを備えています。Claude Code 側で対応が進めば（[#17356](https://github.com/anthropics/claude-code/issues/17356)）、将来的にこれらのツールでもリスク説明が表示されるようになる見込みです。
 
 ## 貢献
 

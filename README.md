@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/header.png" alt="Claude Code Explain Risk" width="600">
+  <img src="assets/header.png" alt="Claude Code Explain Risk">
 </p>
 
 # Claude Code Explain Risk
@@ -32,18 +32,8 @@ Low-risk commands (`ls`, `cat`, `git status`, etc.) pass through silently with n
 
 ## Installation
 
-### One-liner (Recommended)
-
 ```bash
-curl -fsSL https://raw.githubusercontent.com/wataame/claude-code-explain-risk/main/install.sh | bash
-```
-
-### Local Install
-
-```bash
-git clone https://github.com/wataame/claude-code-explain-risk.git
-cd claude-code-explain-risk
-bash install.sh
+npx claude-code-explain-risk
 ```
 
 Restart Claude Code after installation.
@@ -51,11 +41,7 @@ Restart Claude Code after installation.
 ## Uninstall
 
 ```bash
-# If you have the repo locally
-bash uninstall.sh
-
-# Without the repo
-curl -fsSL https://raw.githubusercontent.com/wataame/claude-code-explain-risk/main/uninstall.sh | bash
+npx claude-code-explain-risk --uninstall
 ```
 
 ## Risk Levels
@@ -102,6 +88,19 @@ curl -fsSL https://raw.githubusercontent.com/wataame/claude-code-explain-risk/ma
 | Text processing | `jq`, `sort`, `cut` |
 | Git read-only | `git status`, `git log`, `git diff` |
 | Version/help | `--version`, `--help` |
+
+### Unsupported Tools
+
+The following tools cannot show risk explanations due to Claude Code limitations. Claude Code's built-in permission dialog is shown instead.
+
+| Tool | Description |
+|---|---|
+| Edit / Write | File editing/creation. Claude Code shows the diff in its own UI |
+| WebFetch / WebSearch | Web access. The target URL is shown in Claude Code's own UI |
+| MCP tools | External service integrations. Shown in Claude Code's own UI |
+| Read / Glob / Grep | File reading/searching. Auto-approved as read-only |
+
+> Once Claude Code adds support ([#17356](https://github.com/anthropics/claude-code/issues/17356)), risk explanations will automatically become available for these tools too.
 
 ## Settings Integration
 
@@ -150,23 +149,6 @@ Low risk → passes through silently
 Medium/High risk → shows explanation and asks for confirmation
 ```
 
-### Supported Tools
-
-Risk explanations are shown for **Bash commands only**. This is a Claude Code limitation — hook explanation text can only be displayed in Bash permission dialogs.
-
-| Tool | Permission Dialog | Risk Explanation |
-|---|---|---|
-| **Bash** | Yes | Yes (shown by this tool) |
-| Edit / Write | Yes (Claude Code built-in UI) | No |
-| WebFetch / WebSearch | Yes (Claude Code built-in UI) | No |
-| MCP tools | Yes (Claude Code built-in UI) | No |
-| Read / Glob / Grep | No (auto-approved) | No |
-
-For non-Bash tools (Edit, Write, WebFetch, MCP, etc.), Claude Code's built-in permission dialog is shown as-is. These tools use Claude Code's own UI to display content, so hook explanation text is not used.
-
-> Bash accounts for ~38% of all tool usage and is the most confusing for non-engineers. Covering Bash alone provides significant practical value.
-
-The hook internally includes classification logic for MCP tools, Edit, and Write as well. Once Claude Code adds support ([#17356](https://github.com/anthropics/claude-code/issues/17356)), risk explanations will automatically become available for these tools too.
 
 ## Contributing
 

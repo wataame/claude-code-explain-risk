@@ -1,0 +1,29 @@
+{
+  "name": "claude-code-explain-risk",
+  "version": "1.0.0",
+  "description": "Show risk explanations on Claude Code's permission dialogs",
+  "bin": {
+    "claude-code-explain-risk": "bin/cli.js"
+  },
+  "files": [
+    "bin/cli.js",
+    "hooks/explain-risk.js"
+  ],
+  "keywords": [
+    "claude-code",
+    "hooks",
+    "risk",
+    "safety",
+    "cli"
+  ],
+  "author": "wataame",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wataame/claude-code-explain-risk.git"
+  },
+  "homepage": "https://github.com/wataame/claude-code-explain-risk",
+  "bugs": {
+    "url": "https://github.com/wataame/claude-code-explain-risk/issues"
+  }
+}
