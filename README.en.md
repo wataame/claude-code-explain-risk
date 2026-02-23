@@ -134,7 +134,7 @@ No configuration needed.
 
 ## Requirements
 
-- **Node.js** — Bundled with Claude Code, no extra installation needed
+- **Node.js 18+** — Required for installation and execution (`node --version` to check)
 - **OS** — macOS, Linux
 - **Dependencies** — None (uses only Node.js built-in modules)
 

@@ -136,7 +136,7 @@ Claude Code の `settings.json` で許可済みのコマンドには介入しま
 
 ## 動作環境
 
-- **Node.js** — Claude Code に同梱されているので追加インストール不要
+- **Node.js 18+** — インストールと実行に必要です（`node --version` で確認できます）
 - **対応OS** — macOS、Linux
 - **依存パッケージ** — なし（Node.js 標準ライブラリのみ使用）
 
